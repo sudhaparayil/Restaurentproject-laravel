@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,6 +21,12 @@ Route::get('/', function () {
 
 Route::get("/",[HomeController::class,'index']);
 Route::get("/redirects",[HomeController::class,'reDirect']);
+Route::get("/users",[AdminController::class,'allUser']);
+Route::get("deleteuser/{id}",[AdminController::class,'deleteUser']);
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::get('/convert-to-json', function () {
+    return App\Models\User::paginate(5);
+});
