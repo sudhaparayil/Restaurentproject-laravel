@@ -22,7 +22,12 @@ Route::get('/', function () {
 Route::get("/",[HomeController::class,'index']);
 Route::get("/redirects",[HomeController::class,'reDirect']);
 Route::get("/users",[AdminController::class,'allUser']);
+Route::get("/foodmenu",[AdminController::class,'foodMenu']);
+Route::post("/uploadfood",[AdminController::class,'uploadFood']);
 Route::get("deleteuser/{id}",[AdminController::class,'deleteUser']);
+Route::get("deletemenu/{id}",[AdminController::class,'deleteMenu']);
+Route::get("updateview/{id}",[AdminController::class,'updateView']);
+Route::post("updatefood/{id}",[AdminController::class,'updateFood']);
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
